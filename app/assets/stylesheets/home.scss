@@ -1,0 +1,358 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.video-box {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #47BB39;
+  text-align: center;
+}
+
+.top2 {
+  background-color: rgb(255, 255, 255);
+  height: 2000px;
+  width: 100%;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .box1 {
+    width: calc(100% - 80px);
+    height: 400px;
+    display: flex;
+    .text-box {
+      width: 55%;
+      height: 400px;
+      .p1 {
+        margin-top: 100px;
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        font-size: 32px;
+      }
+      .p2 {
+        height: 150px;
+        width: 100%;
+        font-size: 26.2px;
+        color: #494949;
+      }
+    }
+    .img {
+      text-align: center;
+      width: 45%;
+      padding-top: 75px;
+      img {
+        height: 260px;
+      }
+    }
+    .img2 {
+      text-align: center;
+      width: 45%;
+      padding-top: 25px;
+      img {
+        height: 350px;
+      }
+    }
+
+      .submit_button{
+        margin: 150px auto;
+        position: relative;
+        width: 300px;
+        height: 90px;
+        background-color: rgb(255, 82, 29);
+        border-radius: 10px;
+        text-align: center;
+        label{
+          position:absolute;
+          top: 0;
+          left: 0;
+          height: 90px;
+          width: 100%;
+          border-radius: 10px;
+          text-align: center;
+          cursor: pointer;
+          color: white;
+          line-height: 90px;
+          font-size: 30px;
+        }
+      }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.menus {
+  padding: 20px;
+  .menu_box{
+    background-color: white;
+    width: 98%;
+    padding: 20px 10px;
+
+    .cp_actab {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin: 0 auto;
+      font-size: 35px;
+      input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+      label {
+        width: 100%;
+        height: 110px;
+        font-weight: bold;
+        position: relative;
+        display: block;
+        cursor: pointer;
+      }
+      .tab-label{
+        display: flex;
+        border-bottom: 1px solid  #aaaaaa;
+        img {
+          margin: 10px 15px;
+          height: 80px;
+        }
+        .title{
+          padding-top: 25px;
+        }
+      }
+    }
+    .tab-label2{
+      display: flex;
+      img {
+        margin: 10px 15px;
+        height: 80px;
+      }
+      .title{
+        font-weight: bold;
+        padding-top: 25px;
+      }
+    }
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    
+    .cp_actab .cp_actab-content {
+      overflow: hidden;
+      max-height: 0;
+      -webkit-transition: max-height 0.5s;
+      transition: max-height 0.5s;
+    }
+    .cp_actab .cp_actab-content p {
+      margin: 1em;
+    }
+    /* :checked */
+    .cp_actab input:checked ~ .cp_actab-content {
+      max-height: 20em;
+    }
+
+    /* Icon */
+    .cp_actab label::after {
+      line-height: 0;
+      position: absolute;
+      top: 35px;
+      right: 50px;
+      display: block;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      text-align: center;
+    }
+    .cp_actab input[type=checkbox] + label::after {
+      content: url(./forward.png);
+    }
+    .cp_actab input[type=checkbox]:checked + label::after {
+      transform: rotate(90deg);
+    }
+    .report_box {
+      .report_button {
+        height: 80px;
+        margin-top: 25px;
+        margin-left: 30px;
+      }
+    }
+
+    .inquiry-box {
+      p {
+        font-size: 26px;
+      }
+      .content-box {
+        width: 95%;
+        margin-left: 2.5%;
+        textarea {
+          margin: 0 auto;
+          resize: none;
+          width: 100%;
+          height: 80px;
+          font-size: 11px; /* サイズがおかしい */
+          color: #494949;
+          background-color: #f5f5f5;
+        }
+      }
+      .submit_button{
+        margin: 10px auto;
+        position: relative;
+        width: 200px;
+        height: 60px;
+        background-color: rgb(255, 82, 29);
+        border-radius: 10px;
+        text-align: center;
+        label{
+          position:absolute;
+          top: 0;
+          left: 0;
+          height: 60px;
+          width: 100%;
+          border-radius: 10px;
+          text-align: center;
+          cursor: pointer;
+          color: white;
+          line-height: 60px;
+          font-size: 30px;
+        }
+        input[type=submit] {
+          display: none;  /*チェックボックスを非表示にする */
+        }
+      }
+    }
+    
+  }
+}
+
+.menus2 {
+  padding: 20px;
+  .menu_box2{
+    background-color: white;
+    width: 98%;
+    padding: 20px 10px;
+    .box1 {
+      width: 100%;
+      height: 110px;
+      display:flex;
+      border-bottom: 1px solid  #aaaaaa;
+      .img-box{
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        img{
+          height: 80px;
+        }
+      }
+      .caption-box{
+        height: 50px;
+        margin-top: 30px;
+        font-size: 35px;
+        font-weight: bold;
+      }
+    }
+    .box2 {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      width: 90%;
+      margin-left: 5%;
+      .box2-1 {
+        padding-bottom: 40px;
+        .sub-cap-box{
+          height: 50px;
+          font-size: 32px;
+        }
+        .input-box{
+          height: 60px;
+          display: flex;
+          .text {
+            margin: 0 auto;
+            resize: none;
+            width: 100%;
+            height: 40px;
+            font-size: 30px;
+            color: #494949;
+            background-color: #f5f5f5;
+          }
+          label{
+            display: flex;
+            width: 100%;
+            padding-top: 15px;
+            .check-box {
+              width: 30%;
+              text-align: center;
+              input[type=checkbox] {
+                width:			40px;
+                height:			40px;
+              }
+            }
+            .label {
+              width: 20%;
+              font-size: 30px;
+            }
+          }
+
+        }
+        .submit_button{
+          margin: 0 auto;
+          position: relative;
+          width: 200px;
+          height: 60px;
+          background-color: rgb(255, 82, 29);
+          border-radius: 10px;
+          text-align: center;
+          label{
+            position:absolute;
+            top: 0;
+            left: 0;
+            height: 60px;
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            line-height: 60px;
+            font-size: 30px;
+          }
+          input[type=submit] {
+            display: none;  /*チェックボックスを非表示にする */
+          }
+        }
+      }
+    }
+  }
+}
+
+.secret-box {
+  .blank {
+    height: 2400px;
+  }
+  .secret_item{
+    width: 95%;
+    margin-bottom: 40px;
+    margin-left: 2.5%;
+    background-color: rgb(255, 255, 255);
+    .content{
+      width: 95%;
+      padding: 15px 2.5% 5px 2.5%;
+      font-size: 30px;
+    }
+    .sub-content{
+      width: 95%;
+      padding: 10px 2.5%;
+      font-size: 25px;
+      display: flex;
+      .name {
+        width: 50%;
+      }
+      .reference {
+        width: 50%;
+        text-align: right;
+      }
+    }
+  }
+}

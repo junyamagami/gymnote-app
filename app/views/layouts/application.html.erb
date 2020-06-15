@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GYMNOTE</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+
+  </head>
+
+
+
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div class="header_box">
+          
+          <%if @current_user%>
+            <div class="logo">
+              <%= link_to("/records") do %>
+                <%= image_tag 'logo.png'%>
+              <%end%>
+            </div>  
+            <div class="user_name">
+              <p>お疲れ様です
+              <br>
+              <%= @current_user.name%> さん</p>
+            </div>
+          <% else%>
+            <div class="logo">
+              <a href="/"><%= image_tag 'logo.png'%></a>
+            </div> 
+            <div class="user_name">
+            </div>
+          <% end %>
+          <div class="menu">
+            <%= link_to("/menu") do %>
+              <%= image_tag 'menu.png'%>
+            <%end%>
+          </div>
+        </div> 
+      </div>
+
+      <div class="body">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!--jQuery本体-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!--自分で作るjQueryプログラム-->
+<script>
+/*ここに「ボタンが動いたり色が変わったり」や「テキストが表示されたり消えたり」などのプログラムを書いていきます。*/
+
+$('input[id^="EClist"]').change(function() {
+  var length = $('input[id^="EClist"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="EClist"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+  
+});
+
+
+
+</script>

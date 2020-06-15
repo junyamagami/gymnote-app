@@ -1,0 +1,1053 @@
+<div class="month_select_tab">
+  <div class="back">
+    <%= link_to("/records/#{@prev}") do %>
+      <%= image_tag 'back.png'%>
+    <%end%>
+  </div>
+
+  <div class="month">
+    <p><%=@target[0, 4]%>年<%=@target[4, 2]%>月</P>
+  </div>
+
+  <div class="forward">
+    <%= link_to("/records/#{@next}") do %>
+      <%= image_tag 'forward.png'%>
+    <%end%>
+  </div>
+</div>
+
+
+
+<div class="records">
+
+  <div class="tab-wrap">
+    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" />
+    <label class="tab-label" for="TAB-01">記録</label>
+    <div class="tab-content">
+
+      <div class="evaluate_box">
+        <%= form_tag("/records/#{@target}/#{@edit_record.id}/update") do%>
+
+          <div class="title">
+            <% if @error_date%>
+              <textarea maxlength="8" minlength="8" name="date"><%= @error_date.to_s %></textarea>
+            <% else%>
+              <textarea maxlength="8" minlength="8" name="date"><%= @edit_record.date %></textarea>
+            <% end%>
+            <div class="destroy_button">
+              <%= link_to("/records/#{@target}/#{@edit_record.id}/destroy", {method: :post}) do%>
+                <%= image_tag 'destroy.png'%>
+              <%end%>
+            </div>
+          </div>
+          <div class="event_evaluation">
+            <% if @current_user.gender == 0%>
+              <div class="fx">
+                <div class="event_name">ゆか</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "fx", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "fx", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="ph">
+                <div class="event_name">あん馬</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "ph", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ph", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ph", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ph", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "ph", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ph", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="sr">
+                <div class="event_name">つり輪</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "sr", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "sr", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "sr", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "sr", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "sr", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "sr", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="vt">
+                <div class="event_name">跳馬</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "vt", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "vt", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="pb">
+                <div class="event_name">平行棒</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "pb", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "pb", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "pb", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "pb", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "pb", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "pb", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="hb">
+                <div class="event_name">鉄棒</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "hb", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "hb", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "hb", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "hb", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "hb", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "hb", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              
+            <%else%>
+              <div class="w_vt">
+                <div class="event_name">跳馬</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "vt", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "vt", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "vt", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+              
+              <div class="w_ub">
+                <div class="event_name">段違い平行棒</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "ub", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ub", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ub", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ub", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "ub", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "ub", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+
+              <div class="w_bb">
+                <div class="event_name">平均台</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "bb", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "bb", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "bb", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "bb", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "bb", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "bb", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+              
+              <div class="w_fx">
+                <div class="event_name">ゆか</div>
+                <div class="check_boxes">
+                  <label style="background-color:gainsboro">
+                    <%=check_box "fx", "zero", {:checked => "checked"} %>0
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "one", {} %>1
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "two", {} %>2
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "three", {} %>3
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                  <%= check_box "fx", "four", {} %>4
+                  </label>
+                </div>
+                <div class="check_boxes">
+                  <label>
+                    <%= check_box "fx", "five", {} %>5
+                  </label>
+                </div>
+              </div>
+            <%end%>
+            
+          </div>
+          <div class="edit_comment">
+            <div class="instruct">
+              一言コメントを書こう <span style="color:red">(※ 上の種目別の評価がリセットされています。再度入力してください。)</span>
+            </div>
+            <textarea maxlength="32" name="comment"><%= @edit_record.comment%></textarea>
+          </div>
+          <div class="submit">
+            <div class="submit_button">
+              <label>
+                <input type="submit" value="修正">修正
+              </label>
+            </div>
+          </div>
+
+        <% end%>
+      </div>
+
+      <div class="records_box">
+        <div class="title">
+          記録
+        </div>
+
+        <% if @current_user.gender == 0%>
+          <table>
+            <tr>
+              <th class="date">日にち</th>
+              <th>床</th>
+              <th>あん馬</th>
+              <th>つり輪</th>
+              <th>跳馬</th>
+              <th>平行棒</th>
+              <th>鉄棒</th>
+              <th>全体</th>
+            </tr>
+            <% @records.each do |record| %>
+              <div class="one_block">
+                <tr class="first">
+                  <% date = record.date.to_s%>
+                  <% yobi = (Time.new(date[0,4], date[4,2], date[6,2])).wday%>
+                  <% if yobi == 0%>
+                    <% yobi_s = "日"%>
+                  <%end%>
+                  <% if yobi == 1%>
+                    <% yobi_s = "月"%>
+                  <%end%>
+                  <% if yobi == 2%>
+                    <% yobi_s = "火"%>
+                  <%end%>
+                  <% if yobi == 3%>
+                    <% yobi_s = "水"%>
+                  <%end%>
+                  <% if yobi == 4%>
+                    <% yobi_s = "木"%>
+                  <%end%>
+                  <% if yobi == 5%>
+                    <% yobi_s = "金"%>
+                  <%end%>
+                  <% if yobi == 6%>
+                    <% yobi_s = "土"%>
+                  <%end%>
+                  <td class="date"><%= date[6,7] %>(<%= yobi_s %>)</td>
+                  <td class="value"><%= record.fx%></td>
+                  <td class="value"><%= record.ph%></td>
+                  <td class="value"><%= record.sr%></td>
+                  <td class="value"><%= record.vt%></td>
+                  <td class="value"><%= record.pb%></td>
+                  <td class="value"><%= record.hb%></td>
+                  <td class="average">ave</td>
+                </tr>
+                <tr class="second">
+                  <td colspan="7" class="comment">
+                    <%= record.comment%>
+                  </td>
+                  <td class="edit">
+                    <%= link_to("/records/#{@target}/#{record.id}/edit") do%>
+                      <%= image_tag 'edit.png'%>
+                    <%end%>
+                  </td>
+                </tr>
+              </div>
+            <% end%>
+          </table>
+        <% else%>
+          <table>
+            <tr>
+              <th class="date">日にち</th>
+              <th>跳馬</th>
+              <th>段違い平行棒</th>
+              <th>平均台</th>
+              <th>床</th>
+              <th>全体</th>
+            </tr>
+            <% @records.each do |record| %>
+              <div class="one_block">
+                <tr class="first">
+                  <% date = record.date.to_s%>
+                  <% yobi = (Time.new(date[0,4], date[4,2], date[6,2])).wday%>
+                  <% if yobi == 0%>
+                    <% yobi_s = "日"%>
+                  <%end%>
+                  <% if yobi == 1%>
+                    <% yobi_s = "月"%>
+                  <%end%>
+                  <% if yobi == 2%>
+                    <% yobi_s = "火"%>
+                  <%end%>
+                  <% if yobi == 3%>
+                    <% yobi_s = "水"%>
+                  <%end%>
+                  <% if yobi == 4%>
+                    <% yobi_s = "木"%>
+                  <%end%>
+                  <% if yobi == 5%>
+                    <% yobi_s = "金"%>
+                  <%end%>
+                  <% if yobi == 6%>
+                    <% yobi_s = "土"%>
+                  <%end%>
+                  <td class="date"><%= date[6,7] %>(<%= yobi_s %>)</td>
+                  <td class="value woman"><%= record.vt%></td>
+                  <td class="value"><%= record.ub%></td>
+                  <td class="value"><%= record.bb%></td>
+                  <td class="value"><%= record.fx%></td>
+                  <td class="average">ave</td>
+                </tr>
+                <tr class="second">
+                  <td colspan="5" class="comment">
+                    <%= record.comment%>
+                  </td>
+                  <td class="edit">
+                    <%= link_to("/records/#{@target}/#{record.id}/edit") do%>
+                      <%= image_tag 'edit.png'%>
+                    <%end%>
+                  </td>
+                </tr>
+              </div>
+            <% end%>
+          </table>
+        <%end%>
+
+      </div>
+
+    </div>
+    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
+    <label class="tab-label" for="TAB-02">グラフ</label>
+    <div class="tab-content">
+
+      <div class="whole_graph_box">
+        <div class="title">
+          評価遷移グラフ
+        </div>
+        <div class="graph">
+          <canvas id="myChart" width="100%" height="70px"></canvas>
+        </div>    
+      </div>
+
+      <div class="average_graph_box">
+        <div class="title">
+          平均
+        </div>
+        <div class="graph">
+          <canvas id="myChart2" width="100%" height="60px"></canvas>
+        </div>
+      
+      </div>
+
+    </div>
+  </div>
+
+  
+
+</div>
+
+
+
+
+
+
+<!--jQuery本体-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!--自分で作るjQueryプログラム-->
+<script>
+/*ここに「ボタンが動いたり色が変わったり」や「テキストが表示されたり消えたり」などのプログラムを書いていきます。*/
+
+/******************* チェックボックスの個数制限 *******************/
+$('input[id^="fx"]').change(function() {
+  var length = $('input[id^="fx"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="fx"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="ph"]').change(function() {
+  var length = $('input[id^="ph"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="ph"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="sr"]').change(function() {
+  var length = $('input[id^="sr"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="sr"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="vt"]').change(function() {
+  var length = $('input[id^="vt"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="vt"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="pb"]').change(function() {
+  var length = $('input[id^="pb"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="pb"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="hb"]').change(function() {
+  var length = $('input[id^="hb"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="hb"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="ub"]').change(function() {
+  var length = $('input[id^="ub"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="ub"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+$('input[id^="bb"]').change(function() {
+  var length = $('input[id^="bb"]:checked').length
+  if(length == 0){
+    $(this).prop('checked', true);
+  }else if(length == 2){
+    $('input[id^="bb"]').prop('checked', false)
+    $(this).prop('checked', true);
+  }
+});
+
+
+
+/******************* チェックボックスの背景操作 *******************/
+$('input[type=checkbox]').change(function() {
+  $('input[type=checkbox]').each(function(){
+    $(this).closest('label').css('backgroundColor', 'white');
+  });
+  $('input[type=checkbox]:checked').each(function(){
+    $(this).closest('label').css('backgroundColor', 'gainsboro');
+  });
+});
+
+/******************* recordsのaverage *******************/
+value_arrays = [];
+values = [];
+
+var i = 0;
+$('td.value').each(function(){
+  if($(this).text() == 0){
+    value = 0;
+  }else if($(this).text() == 1){
+    value = 1;
+  }else if($(this).text() == 2){
+    value = 2;
+  }else if($(this).text() == 3){
+    value = 3;
+  }else if($(this).text() == 4){
+    value = 4;
+  }else if($(this).text() == 5){
+    value = 5;
+  }
+  values.push(value);
+
+  i++;
+
+  if("<%=@current_user.gender%>" == "0"){
+    if(i >= 6){
+      value_arrays.push(values);
+      values = []
+      i = 0;
+    }
+  }else{
+    if(i >= 4){
+      value_arrays.push(values);
+      values = []
+      i = 0;
+    }
+  }
+  
+});
+
+var i = 0
+var ave_array = [];
+$('td.average').each(function(){
+  var average = 0;
+  if("<%=@current_user.gender%>" == "0"){
+    for(var j=0; j<=5; j++){
+      average += value_arrays[i][j];
+    }
+    average = average / 6;
+  }else{
+    for(var j=0; j<=3; j++){
+      average += value_arrays[i][j];
+    }
+    average = average / 4;
+  }
+  
+  average = Math.round(average * 100) / 100
+  ave_array.push(average);
+  $(this).html(average);
+  i++;
+});
+
+/******************* recordsのvalueの色 *******************/
+$('td.value, td.average').each(function(){
+  if ($(this).text() == 0){
+    $(this).closest('td').css('backgroundColor', 'red');
+    $(this).css('color', 'white');
+  }else if($(this).text() <= 1){
+    $(this).css('color', 'red');
+  }else if($(this).text() <= 2){
+    $(this).css('color', '#C77A7A');
+  }else if($(this).text() <= 3){
+    $(this).css('color', '#656769');
+  }else if($(this).text() <= 4){
+    $(this).css('color', '#6A85B8');
+  }else if($(this).text() <= 5){
+    $(this).css('color', '#3565C2');
+  }
+});
+
+
+/******************* 折れ線グラフ *******************/
+
+var date_array = [];
+$('td.date').each(function(){
+  var date =  ($(this).text()).slice(0,2);
+  date_array.push(date);
+});
+
+X0_array = []; /* date */
+Y0_array = []; /* 全体 */
+
+Y1_array = []; /* 床 or 女子跳馬 */
+Y2_array = []; /* あん馬 or 女子段ち */
+Y3_array = []; /* つり輪 or 女子平均*/
+Y4_array = []; /* 跳馬 or 女子床*/
+if("<%=@current_user.gender%>" == "0"){
+  Y5_array = []; /* 平行棒 */
+  Y6_array = []; /* 鉄棒 */
+}
+
+var i = 0;
+for(var d=1; d<=31; d++){
+  X0_array.push(d);
+  if(d == date_array[i]){
+    Y0_array.push(ave_array[i]);
+    Y1_array.push(value_arrays[i][0]);
+    Y2_array.push(value_arrays[i][1]);
+    Y3_array.push(value_arrays[i][2]);
+    Y4_array.push(value_arrays[i][3]);
+    if("<%=@current_user.gender%>" == "0"){
+      Y5_array.push(value_arrays[i][4]);
+      Y6_array.push(value_arrays[i][5]);
+    }
+    i++;
+  }else{
+    Y0_array.push(0); /* 0でいいんかな */
+    Y1_array.push(0);
+    Y2_array.push(0);
+    Y3_array.push(0);
+    Y4_array.push(0);
+    if("<%=@current_user.gender%>" == "0"){
+      Y5_array.push(0);
+      Y6_array.push(0);
+    }
+  }
+}
+
+
+
+if("<%=@current_user.gender%>" == "1"){
+  // 女子
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: X0_array,
+      datasets: [{
+        label: '跳馬',
+        hidden: true,
+        data: Y1_array,
+        backgroundColor: "rgba(255,153,0,0.4)"
+      }, 
+      {
+        label: '段違い平行棒',
+        hidden: true,
+        data: Y2_array,
+        backgroundColor: "rgba(255,0,153,0.4)"
+      }, 
+      {
+        label: '平均台',
+        hidden: true,
+        data: Y3_array,
+        backgroundColor: "rgba(0,255,153,0.4)"
+      }, 
+      {
+        label: '床',
+        hidden: true,
+        data: Y4_array,
+        backgroundColor: "rgba(0,153,255,0.4)"
+      },
+      {
+        label: '全体',
+        data: Y0_array,
+        backgroundColor: "rgba(153,255,51,0.4)"
+      }]
+    },
+    options: {
+      legend: {   
+        labels: {
+          fontSize: 25
+        }
+      },
+      scales: {                          //軸設定
+        yAxes: [{                      //y軸設定
+          display: true,             //表示設定
+          ticks: {                      //最大値最小値設定
+              min: 0,                   //最小値
+              max: 5.0,                  //最大値
+              fontSize: 20,             //フォントサイズ
+              stepSize: 1.0               //軸間隔
+          }
+        }],
+        xAxes: [{                         //x軸設定
+          display: true,                //表示設定
+          ticks: {
+              fontSize: 20,             //フォントサイズ
+          }
+        }],
+      }
+    }
+    
+  });
+
+  /******************* 棒グラフ *******************/
+
+  X0_array2 = ['跳馬', '段違い平行棒', '平均台', '床', '全体']
+  y0 = 0;
+  y1 = 0;
+  y2 = 0;
+  y3 = 0;
+  y4 = 0;
+  length = date_array.length
+  for(var i=0; i<length; i++){
+    y0 += ave_array[i];
+    y1 += value_arrays[i][0];
+    y2 += value_arrays[i][1];
+    y3 += value_arrays[i][2];
+    y4 += value_arrays[i][3];
+  }
+  y0 = y0 / length;
+  y1 = y1 / length;
+  y2 = y2 / length;
+  y3 = y3 / length;
+  y4 = y4 / length;
+
+  var ctx2 = document.getElementById('myChart2').getContext('2d');
+  var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: X0_array2,
+      datasets: [{
+        data: [y1, y2, y3, y4, y0],
+        backgroundColor: ["rgba(255,153,0,0.4)", "rgba(255,0,153,0.4)", "rgba(0,255,153,0.4)", "rgba(0,153,255,0.4)", "rgba(153,255,51,0.4)"]
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {                          //軸設定
+        yAxes: [{                      //y軸設定
+          display: true,             //表示設定
+          ticks: {                      //最大値最小値設定
+              min: 0,                   //最小値
+              max: 5,                  //最大値
+              fontSize: 20,             //フォントサイズ
+              stepSize: 0.5               //軸間隔
+          }
+        }],
+        xAxes: [{                         //x軸設定
+          display: true,                //表示設定
+          ticks: {
+              fontSize: 20,             //フォントサイズ
+          }
+        }]
+      }
+    }
+  });
+}else{
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: X0_array,
+      datasets: [{
+        label: '床',
+        hidden: true,
+        data: Y1_array,
+        backgroundColor: "rgba(255,153,0,0.4)"
+      }, 
+      {
+        label: 'あん馬',
+        hidden: true,
+        data: Y2_array,
+        backgroundColor: "rgba(255,0,153,0.4)"
+      }, 
+      {
+        label: 'つり輪',
+        hidden: true,
+        data: Y3_array,
+        backgroundColor: "rgba(0,255,153,0.4)"
+      }, 
+      {
+        label: '跳馬',
+        hidden: true,
+        data: Y4_array,
+        backgroundColor: "rgba(0,153,255,0.4)"
+      }, 
+      {
+        label: '平行棒',
+        hidden: true,
+        data: Y5_array,
+        backgroundColor: "rgba(153,0,255,0.4)"
+      }, 
+      {
+        label: '鉄棒',
+        hidden: true,
+        data: Y6_array,
+        backgroundColor: "rgba(0,153,0,0.4)"
+      },
+      {
+        label: '全体',
+        data: Y0_array,
+        backgroundColor: "rgba(153,255,51,0.4)"
+      }]
+    },
+    options: {
+      legend: {   
+        labels: {
+          fontSize: 25
+        }
+      },
+      scales: {                          //軸設定
+        yAxes: [{                      //y軸設定
+          display: true,             //表示設定
+          ticks: {                      //最大値最小値設定
+              min: 0,                   //最小値
+              max: 5.0,                  //最大値
+              fontSize: 20,             //フォントサイズ
+              stepSize: 0.5               //軸間隔
+          }
+        }],
+        xAxes: [{                         //x軸設定
+          display: true,                //表示設定
+          ticks: {
+              fontSize: 20,             //フォントサイズ
+          }
+        }],
+      }
+    }
+    
+  });
+
+  X0_array2 = ['床', 'あん馬', 'つり輪', '跳馬', '平行棒', '鉄棒', '全体']
+  y0 = 0;
+  y1 = 0;
+  y2 = 0;
+  y3 = 0;
+  y4 = 0;
+  y5 = 0;
+  y6 = 0;
+  length = date_array.length
+  for(var i=0; i<length; i++){
+    y0 += ave_array[i];
+    y1 += value_arrays[i][0];
+    y2 += value_arrays[i][1];
+    y3 += value_arrays[i][2];
+    y4 += value_arrays[i][3];
+    y5 += value_arrays[i][4];
+    y6 += value_arrays[i][5];
+  }
+  y0 = y0 / length;
+  y1 = y1 / length;
+  y2 = y2 / length;
+  y3 = y3 / length;
+  y4 = y4 / length;
+  y5 = y5 / length;
+  y6 = y6 / length; 
+
+  var ctx2 = document.getElementById('myChart2').getContext('2d');
+  var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: X0_array2,
+      datasets: [{
+        data: [y1, y2, y3, y4, y5, y6, y0],
+        backgroundColor: ["rgba(255,153,0,0.4)", "rgba(255,0,153,0.4)", "rgba(0,255,153,0.4)", "rgba(0,153,255,0.4)", "rgba(153,0,255,0.4)", "rgba(0,153,0,0.4)", "rgba(153,255,51,0.4)"]
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {                          //軸設定
+        yAxes: [{                      //y軸設定
+          display: true,             //表示設定
+          ticks: {                      //最大値最小値設定
+              min: 0,                   //最小値
+              max: 5,                  //最大値
+              fontSize: 20,             //フォントサイズ
+              stepSize: 0.5               //軸間隔
+          }
+        }],
+        xAxes: [{                         //x軸設定
+          display: true,                //表示設定
+          ticks: {
+              fontSize: 20,             //フォントサイズ
+          }
+        }]
+      }
+    }
+  });
+}
+
+
+
+</script>

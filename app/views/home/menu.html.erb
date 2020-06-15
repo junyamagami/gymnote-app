@@ -1,0 +1,196 @@
+<%if @current_user%>
+  <div class="menus">
+    <div class="menu_box">
+
+      <div class="cp_actab">
+        <input id="tab-one" type="checkbox" name="tabs">
+        <label for="tab-one">
+          <div class="tab-label">
+            <div class="img">
+              <%= image_tag 'inquiry.png'%> 
+            </div>
+            <div class="title">
+              ご意見箱
+            </div>
+          </div>
+        </label>
+        <div class="cp_actab-content inquiry-box">
+          <%= form_tag("/menu/inquiry") do%>
+            <p>こんな機能が欲しい、ここが使いづらい等のご意見をお送りください！</p>
+            <div class="content-box">
+              <textarea name="content"></textarea>
+            </div>
+            <div class="submit_button">
+              <label>
+                <input type="submit", value="ログイン(失敗した場合の処理ができてない)">送信
+              </label>
+            </div>
+          <% end%>
+        </div>
+      </div>
+      
+      <div class="cp_actab">
+        <input id="tab-two" type="checkbox" name="tabs">
+        <label for="tab-two">
+          <div class="tab-label">
+            <div class="img">
+              <%= image_tag 'report.png'%> 
+            </div>
+            <div class="title">
+              過去レポート
+            </div>
+          </div>
+        </label>
+        <div class="cp_actab-content report_box">
+          <% @record_month.each do |month| %>
+            <div class="report_button">
+              <div class="a_box">
+                <%= link_to "/menu/report/#{month}"  do%>
+                  <%="#{month[0, 4]}年#{month[4, 2]}月"%>
+                <%end%>
+              </div>
+            </div>
+          <%end%>
+        </div>
+      </div>
+
+      <%= link_to("/users/logout", {method: :post}) do %>
+      <div class="cp_actab">
+        <div class="tab-label2">
+          <div class="img">
+            <%= image_tag 'logout.png'%> 
+          </div>
+          <div class="title">
+            ログアウト
+          </div>
+        </div>
+      </div>
+
+      
+
+      <%end%>
+    </div>
+  </div>
+<%else%>
+  <div class="menus2">
+    <div class="menu_box2">
+      <div class="box1">
+        <div class="img-box">
+          <%= image_tag 'login.png'%> 
+        </div>
+        <div class="caption-box">
+          ログイン
+        </div>
+      </div>
+
+      <%= form_tag("/users/login") do%>
+      <div class="box2">
+        <div class="box2-1">
+          <div class="sub-cap-box">
+            ユーザー名
+          </div>
+          <div class="input-box">
+            <input class="text" name="login_name" value="<%= @login_name%>">
+          </div>
+        </div>
+        <div class="box2-1">
+          <div class="sub-cap-box">
+            パスワード
+          </div>
+          <div class="input-box">
+            <input class="text" type="password" name="login_password" value="<%= @login_password%>">
+          </div>
+        </div>
+        <div class="box2-1">
+          <div class="submit_button">
+            <label>
+              <input type="submit", value="ログイン(失敗した場合の処理ができてない)">ログイン
+            </label>
+          </div>
+        </div>
+      </div>
+      <% end%>
+
+
+      <div class="box1">
+        <div class="img-box">
+          <%= image_tag 'signup.png'%> 
+        </div>
+        <div class="caption-box">
+          新規登録
+        </div>
+      </div>
+      <%= form_tag("/users/create") do%>
+      <div class="box2">
+        <div class="box2-1">
+          <div class="sub-cap-box">
+            性別
+          </div>
+          <div class="input-box">
+            <label>
+              <div class="check-box">
+                <%= check_box "EClist", "male", {:checked => "checked"} %>
+              </div>
+              <div class="label">
+                男性
+              </div>
+            </label>
+            <label>
+              <div class="check-box">
+                <%= check_box "EClist", "female", {} %>
+              </div>
+              <div class="label">
+                女性
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="box2-1">
+          <div class="sub-cap-box">
+            ユーザー名
+          </div>
+          <div class="input-box">
+            <input class="text" name="new_name">
+          </div>
+        </div>
+        <div class="box2-1">
+          <div class="sub-cap-box">
+            パスワード
+          </div>
+          <div class="input-box">
+            <input class="text" type="password" name="new_password">
+          </div>
+        </div>
+        <div class="box2-1">
+          <div class="submit_button">
+            <label>
+              <input type="submit", value="新規登録(失敗した時の処理を考える必要あり)">新規登録
+            </label>
+          </div>
+        </div>
+      </div>
+      <% end%>
+      
+    </div>
+  </div>
+<%end%>
+
+<div class="secret-box">
+  <div class="blank">
+  </div>
+  <div class="secret_item">
+    <div class="content">
+      "<%= @secret_item.content%>"
+    </div>
+    <div class="sub-content">
+      <div class="name">
+      -- <%= @secret_item.speaker%>
+      </div>
+      <div class="reference">
+        <%= @secret_item.source%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
