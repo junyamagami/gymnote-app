@@ -41,8 +41,12 @@ class HomeController < ApplicationController
     # secret-box
     data_arrays = Proverb.all
     n = data_arrays.count
-    i = rand(1000)%n
-    @secret_item = data_arrays[i]
+    if n != 0
+      i = rand(1000)%n
+      @secret_item = data_arrays[i]
+    else
+      @secret_item = Proverb.new
+    end
     
   end
 
