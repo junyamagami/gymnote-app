@@ -51,7 +51,7 @@
 }
 
 .user_name{
-  width: calc(100% - (340px + 180px));
+  width: calc(100% - 520px);
   height: 100%;
   text-align: right;
 }
